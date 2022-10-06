@@ -28,15 +28,13 @@
                 const nota=parseFloat(x.querySelector(".grade_value").value)
                 const percentage=parseFloat(x.querySelector(".percentage_value").value)
 
-                if (nota>=0&&percentage>=0){
+
                     notas.push(nota);
                     porcentajes.push(percentage);
-                }
 
             })
 
-                console.log(notas);
-                console.log(porcentajes);
+
                 modal.classList.add("d-block");
                 Promediar(notas,porcentajes)
         }
@@ -87,6 +85,13 @@
 
 
         for (let i = 0; i < notas.length; i++) {
+
+            if (notas[i]>5||porcentajes[i]>100||notas[i]<0||porcentajes[i]<0){
+
+                resultTitle.innerHTML="Ha ocurrido un error"
+                result.innerHTML="Error! El valor maximo de las notas es 5 y porcentaje 100";
+                return;
+            }
             calificacionActual += notas[i] * (porcentajes[i] / 100);
             porcentaje += porcentajes[i];
         }
@@ -102,7 +107,7 @@
 
 
 
-        if (porcentajeRestante<=0){
+        if (porcentajeRestante<0){
             resultTitle.innerHTML="Ha ocurrido un error"
             result.innerHTML="La suma de los porcentajes tiene que ser igual a 100";
             return;
