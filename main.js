@@ -27,10 +27,12 @@
                 console.log(x)
                 const nota=parseFloat(x.querySelector(".grade_value").value)
                 const percentage=parseFloat(x.querySelector(".percentage_value").value)
-
-
+                if (!isNaN(nota)&&!isNaN(percentage)){
                     notas.push(nota);
                     porcentajes.push(percentage);
+                }
+
+
 
             })
 
